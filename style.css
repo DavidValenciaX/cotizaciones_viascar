@@ -431,3 +431,36 @@ textarea {
         print-color-adjust: exact !important;
     }
 }
+/* Additional Notes Styles */
+.additional-notes {
+    margin-top: 15px;
+}
+
+.additional-notes textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    background: #f9f9f9;
+    resize: vertical;
+    min-height: 50px;
+}
+
+.additional-notes textarea:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    background: white;
+}
+
+.additional-notes-display {
+    display: none;
+    margin-top: 10px;
+}
+
+.additional-notes-display p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #77b300;
+}

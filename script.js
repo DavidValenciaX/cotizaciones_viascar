@@ -30,8 +30,7 @@ const initialData = {
     },
     "notas": [
         "La cotización es válida por 7 días.",
-        "La fecha de ejecución del servicio se coordinará según disponibilidad.",
-        "<Ingrese cualquier otra nota adicional>"
+        "La fecha de ejecución del servicio se coordinará según disponibilidad."
     ]
 };
 
@@ -44,6 +43,21 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.classList.contains('qty-input') || e.target.classList.contains('price-input')) {
             updateRowTotal(e.target.closest('tr'));
             calculateTotals();
+        }
+    });
+
+    // Event listener for printing - update additional notes display only when printing
+    window.addEventListener('beforeprint', function () {
+        const additionalNotesInput = document.getElementById('additional-notes-input');
+        const additionalNotesDisplay = document.getElementById('additional-notes-display');
+        const noteText = additionalNotesInput.value.trim();
+
+        if (noteText) {
+            additionalNotesDisplay.innerHTML = `<p>${noteText}</p>`;
+            additionalNotesDisplay.style.display = 'block';
+        } else {
+            additionalNotesDisplay.innerHTML = '';
+            additionalNotesDisplay.style.display = 'none';
         }
     });
 });
