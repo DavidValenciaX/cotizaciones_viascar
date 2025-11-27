@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización - VIASCAR Ingeniería S.A.S.</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="page-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <!-- Placeholder for Logo -->
+                <div class="logo-placeholder">
+                    <img src="logo_viascar.svg" alt="Logo">
+                </div>
+                <div class="company-title">
+                    <h1 id="company-name">VIASCAR</h1>
+                    <p id="company-subtitle">Ingeniería S.A.S.</p>
+                </div>
+            </div>
+            <div class="date-section">
+                <span id="quote-date-display"></span>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Sender Info -->
+            <section class="sender-info">
+                <p>Representante Legal: <span id="sender-rep">Carolina Valencia Álvarez</span></p>
+                <p>NIT: <span id="sender-nit">901728845-0</span></p>
+                <p>Email: <span id="sender-email">viascar.ing@gmail.com</span></p>
+                <p>Teléfono: <span id="sender-phone">(305) 322-9035</span></p>
+            </section>
+
+            <!-- Recipient Info -->
+            <section class="recipient-block">
+                <label class="recipient-label">SEÑORES:</label>
+                <input type="text" id="recipient-name" class="recipient-name"
+                    value="Trilatero Diseño Construcción e Interventoría S.A.S.">
+                <p class="intro-text">Presento a ustedes la siguiente cotización:</p>
+            </section>
+
+            <!-- Main Table -->
+            <section class="items-section">
+                <table id="quote-table">
+                    <thead>
+                        <tr>
+                            <th class="col-desc">Descripción</th>
+                            <th class="col-qty">Cantidad</th>
+                            <th class="col-unit">Und</th>
+                            <th class="col-price">Vr. Unitario</th>
+                            <!-- Hidden but used for calc -->
+                            <th class="col-total">Total</th>
+                            <th class="col-action no-print"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows populated by JS -->
+                    </tbody>
+                </table>
+                <div class="table-actions no-print">
+                    <button class="btn-add" onclick="addRow()">+ Agregar Item</button>
+                </div>
+            </section>
+
+            <!-- Totals -->
+            <section class="totals-section">
+                <div class="totals-grid">
+                    <div class="total-row">
+                        <span>SUBTOTAL:</span>
+                        <span id="subtotal-display">$0</span>
+                    </div>
+                    <!-- IVA removed as per screenshot/JSON, but logic can keep it if needed. JSON has subtotal=total -->
+                    <div class="total-row grand-total">
+                        <span>TOTAL:</span>
+                        <span id="total-display">$0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notes -->
+            <section class="notes-section">
+                <h3>Nota:</h3>
+                <div class="notes-content" id="notes-content">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Signature -->
+            <div class="signature-section">
+                <div class="signature-line"></div>
+                <div class="signature-name" id="sig-name">Carolina Valencia Álvarez</div>
+                <div class="signature-nit" id="sig-nit">NIT: 901728845-0</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-bg"></div>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span id="footer-phone">(305) 322-9035</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span id="footer-email">viascar.ing@gmail.com</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-building"></i>
+                    <span>VIASCAR Ingeniería</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Print Button -->
+        <div class="floating-actions no-print">
+            <button onclick="window.print()" class="btn-print">Imprimir / Guardar PDF</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

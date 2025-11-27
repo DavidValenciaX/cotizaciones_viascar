@@ -1,0 +1,433 @@
+:root {
+    --primary-green: #8dbf28;
+    /* Light green for header background */
+    --dark-green: #6b8e23;
+    /* Darker green for text/accents */
+    --header-text: #4a5d23;
+    /* Dark olive for header text */
+    --white: #ffffff;
+    --text-color: #333;
+    --border-color: #ddd;
+    --font-family: 'Roboto', sans-serif;
+    --table-header-bg: #b5cf3c;
+    /* Yellow-green for table headers */
+    --total-bg: #9ac435;
+    /* Green for total box */
+    --footer-bg: #d4ac0d;
+    /* Gold/Mustard for footer curve */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.page-container {
+    max-width: 8.5in;
+    /* Letter size width */
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 11in;
+    /* Letter size height */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #8dbf28 0%, #b5cf3c 100%);
+    padding: 40px 40px 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: var(--header-text);
+    position: relative;
+    /* Curve at bottom of header */
+    border-bottom-left-radius: 50% 20px;
+    border-bottom-right-radius: 50% 20px;
+    margin-bottom: 30px;
+}
+
+.logo-section {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.logo-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #2c3e50;
+    /* Dark background for logo placeholder */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border: 2px solid white;
+    text-align: center;
+}
+
+.company-title h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #4a5d23;
+    text-transform: uppercase;
+}
+
+.company-title p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #6b8e23;
+}
+
+.date-section {
+    text-align: right;
+    font-weight: bold;
+    color: #4a5d23;
+    font-size: 0.95rem;
+}
+
+/* Main Content Padding */
+.content-wrapper {
+    padding: 0 40px;
+    flex: 1;
+}
+
+/* Sender Info (Top Block) */
+.sender-info {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #77b300;
+}
+
+.sender-info p {
+    margin: 2px 0;
+}
+
+/* Recipient Block (Señores) */
+.recipient-block {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.recipient-label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #5c4018;
+    /* Brownish text */
+    margin-bottom: 5px;
+    display: block;
+}
+
+.recipient-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #5c4018;
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 5px 0;
+}
+
+.intro-text {
+    color: #77b300;
+    margin-bottom: 20px;
+}
+
+/* Table */
+#quote-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#quote-table th {
+    background-color: var(--table-header-bg);
+    color: white;
+    padding: 10px 8px;
+    text-align: left;
+    font-weight: bold;
+    border: none;
+    font-size: 0.9rem;
+}
+
+#quote-table td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.col-desc {
+    width: 45%;
+}
+
+.col-qty {
+    width: 10%;
+    text-align: center;
+}
+
+.col-unit {
+    width: 10%;
+    text-align: center;
+}
+
+.col-price {
+    width: 15%;
+    text-align: right;
+}
+
+/* Hidden visually if needed, but kept for logic */
+.col-total {
+    width: 15%;
+    text-align: right;
+    font-weight: bold;
+    color: #555;
+}
+
+.col-action {
+    width: 5%;
+}
+
+/* Inputs in table */
+.qty-input,
+.price-input,
+.unit-input {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+.qty-input:hover,
+.price-input:hover,
+.unit-input:hover,
+.qty-input:focus,
+.price-input:focus,
+.unit-input:focus {
+    border-bottom: 1px solid var(--primary-green);
+    outline: none;
+}
+
+.qty-input {
+    text-align: center;
+}
+
+.unit-input {
+    text-align: center;
+}
+
+.price-input {
+    text-align: right;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: transparent;
+}
+
+/* Totals */
+.totals-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+}
+
+.totals-grid {
+    width: 350px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-weight: bold;
+    color: #555;
+}
+
+.grand-total {
+    background-color: var(--total-bg);
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 1.05rem;
+}
+
+/* Notes */
+.notes-section {
+    margin-bottom: 50px;
+}
+
+.notes-section h3 {
+    color: #5c4018;
+    margin-bottom: 10px;
+}
+
+.notes-content p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #77b300;
+}
+
+/* Signature */
+.signature-section {
+    margin-bottom: 60px;
+    /* Space above footer bg */
+    text-align: right;
+    padding-right: 40px;
+}
+
+.signature-line {
+    border-top: 2px solid #8dbf28;
+    width: 250px;
+    margin-left: auto;
+    margin-bottom: 5px;
+}
+
+.signature-name {
+    font-weight: bold;
+    color: #5c4018;
+}
+
+.signature-nit {
+    color: #77b300;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    margin-top: auto;
+    padding-top: 40px;
+}
+
+/* Curved bottom background */
+.footer-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to right, #d4ac0d, #8dbf28);
+    clip-path: ellipse(80% 100% at 50% 100%);
+    z-index: 0;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 40px 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: white;
+}
+
+.contact-info {
+    display: flex;
+    gap: 30px;
+    font-size: 0.9rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Buttons */
+.btn-add,
+.btn-remove,
+.btn-print {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-add {
+    background: #8dbf28;
+    color: white;
+    padding: 10px 20px;
+}
+
+.btn-remove {
+    background: #e74c3c;
+    color: white;
+    padding: 2px 6px;
+}
+
+.btn-print {
+    background: #2c3e50;
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.floating-actions {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+}
+
+/* Print Styles - Letter Size (8.5 x 11 inches) with no margins */
+@page {
+    size: letter;
+    /* 8.5in x 11in */
+    margin: 0;
+    /* Remove all margins */
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    html,
+    body {
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    .page-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        width: 8.5in;
+        height: 11in;
+        max-width: 8.5in;
+        min-height: 11in;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
