@@ -292,6 +292,10 @@ textarea {
     margin: 5px 0;
     font-size: 0.9rem;
     color: #77b300;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 /* Signature */
@@ -464,4 +468,8 @@ textarea {
     margin: 5px 0;
     font-size: 0.9rem;
     color: #77b300;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
 }
