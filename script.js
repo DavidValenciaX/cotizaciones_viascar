@@ -46,19 +46,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Event listener for printing - update additional notes display only when printing
     window.addEventListener('beforeprint', function () {
         const additionalNotesInput = document.getElementById('additional-notes-input');
         const additionalNotesDisplay = document.getElementById('additional-notes-display');
         const noteText = additionalNotesInput.value.trim();
+        additionalNotesDisplay.innerHTML = noteText ? `<p>${noteText}</p>` : '';
+    });
 
-        if (noteText) {
-            additionalNotesDisplay.innerHTML = `<p>${noteText}</p>`;
-            additionalNotesDisplay.style.display = 'block';
-        } else {
-            additionalNotesDisplay.innerHTML = '';
-            additionalNotesDisplay.style.display = 'none';
-        }
+    window.addEventListener('afterprint', function () {
+        const additionalNotesDisplay = document.getElementById('additional-notes-display');
+        additionalNotesDisplay.innerHTML = '';
     });
 });
 

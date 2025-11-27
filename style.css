@@ -435,6 +435,10 @@ textarea {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
+
+    .additional-notes-display {
+        display: block !important;
+    }
 }
 /* Additional Notes Styles */
 .additional-notes {
