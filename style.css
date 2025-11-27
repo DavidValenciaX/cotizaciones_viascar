@@ -247,6 +247,7 @@ textarea {
     font-size: inherit;
     color: inherit;
     background: transparent;
+    field-sizing: content;
 }
 
 /* Totals */
@@ -444,8 +445,8 @@ textarea {
     font-size: 0.9rem;
     color: #555;
     background: #f9f9f9;
-    resize: vertical;
-    min-height: 50px;
+    resize: none;
+    field-sizing: content;
 }
 
 .additional-notes textarea:focus {
