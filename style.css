@@ -439,7 +439,26 @@ textarea {
     .additional-notes-display {
         display: block !important;
     }
+
+    /* Hide scrollbars on textareas in print to avoid ugly bars */
+    textarea {
+        overflow: hidden;
+        resize: none;
+    }
 }
+
+/* Hide number input arrows/spinners */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
 /* Additional Notes Styles */
 .additional-notes {
     margin-top: 15px;

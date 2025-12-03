@@ -18,9 +18,9 @@ const initialData = {
     "items": [
         {
             "descripcion": "Hospedaje de <Ingrese el nombre de la persona>\nDel <Ingrese la fecha de inicio> al <Ingrese la fecha de fin> del año <Ingrese el año>",
-            "cantidad": "<Ingrese la cantidad de noches>",
+            "cantidad": 0,
             "unidad": "Noches",
-            "total_linea": ""
+            "total_linea": 0
         }
     ],
     "financiero": {
@@ -51,11 +51,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const additionalNotesDisplay = document.getElementById('additional-notes-display');
         const noteText = additionalNotesInput.value.trim();
         additionalNotesDisplay.innerHTML = noteText ? `<p>${noteText}</p>` : '';
+
+        // Resize all textareas to fit content so no scrollbars are needed
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        });
     });
 
     window.addEventListener('afterprint', function () {
         const additionalNotesDisplay = document.getElementById('additional-notes-display');
         additionalNotesDisplay.innerHTML = '';
+
+        // Reset textarea height to let CSS handle it again
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.style.height = '';
+        });
     });
 });
 
@@ -111,11 +122,17 @@ function addItemRow(item = {}) {
         unitPrice = item.total_linea / item.cantidad;
     }
 
+    // Prepare display values: if 0, show empty string to let placeholder "0" show
+    const qty = item.cantidad !== undefined ? item.cantidad : 0;
+    const qtyDisplay = (qty === 0 || qty === '0') ? '' : qty;
+
+    const priceDisplay = (unitPrice === 0 || unitPrice === '0') ? '' : unitPrice;
+
     newRow.innerHTML = `
         <td class="col-desc"><textarea rows="2">${item.descripcion || ''}</textarea></td>
-        <td class="col-qty"><input type="number" value="${item.cantidad || 1}" min="1" class="qty-input"></td>
+        <td class="col-qty"><input type="number" value="${qtyDisplay}" min="0" placeholder="0" class="qty-input"></td>
         <td class="col-unit"><input type="text" value="${item.unidad || 'Und'}" class="unit-input"></td>
-        <td class="col-price"><input type="number" value="${unitPrice}" class="price-input"></td>
+        <td class="col-price"><input type="number" value="${priceDisplay}" placeholder="0" class="price-input"></td>
         <td class="col-total">${formatCurrency(item.total_linea || 0)}</td>
         <td class="col-action no-print"><button class="btn-remove" onclick="removeRow(this)">×</button></td>
     `;
