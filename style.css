@@ -295,6 +295,7 @@ textarea {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
     word-break: break-word;
+    -webkit-hyphens: auto;
     hyphens: auto;
 }
 
@@ -375,13 +376,13 @@ textarea {
 
 .btn-add {
     background: #8dbf28;
-    color: white;
+    color: #1a3300;
     padding: 10px 20px;
 }
 
 .btn-remove {
     background: #e74c3c;
-    color: white;
+    color: #2d0704;
     padding: 2px 6px;
 }
 
@@ -494,5 +495,6 @@ input[type=number] {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
     word-break: break-word;
+    -webkit-hyphens: auto;
     hyphens: auto;
 }

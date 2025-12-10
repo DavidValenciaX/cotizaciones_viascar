@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    window.addEventListener('beforeprint', function () {
+    globalThis.addEventListener('beforeprint', function () {
         const additionalNotesInput = document.getElementById('additional-notes-input');
         const additionalNotesDisplay = document.getElementById('additional-notes-display');
         const noteText = additionalNotesInput.value.trim();
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    window.addEventListener('afterprint', function () {
+    globalThis.addEventListener('afterprint', function () {
         const additionalNotesDisplay = document.getElementById('additional-notes-display');
         additionalNotesDisplay.innerHTML = '';
 
@@ -123,10 +123,10 @@ function addItemRow(item = {}) {
     }
 
     // Prepare display values: if 0, show empty string to let placeholder "0" show
-    const qty = item.cantidad !== undefined ? item.cantidad : 0;
-    const qtyDisplay = (qty === 0 || qty === '0') ? '' : qty;
+    const qty = item.cantidad === undefined ? 0 : item.cantidad;
+    const qtyDisplay = qty === 0 ? '' : qty;
 
-    const priceDisplay = (unitPrice === 0 || unitPrice === '0') ? '' : unitPrice;
+    const priceDisplay = unitPrice === 0 ? '' : unitPrice;
 
     newRow.innerHTML = `
         <td class="col-desc"><textarea rows="2">${item.descripcion || ''}</textarea></td>
@@ -155,8 +155,8 @@ function removeRow(button) {
 }
 
 function updateRowTotal(row) {
-    const qty = parseFloat(row.querySelector('.qty-input').value) || 0;
-    const price = parseFloat(row.querySelector('.price-input').value) || 0;
+    const qty = Number.parseFloat(row.querySelector('.qty-input').value) || 0;
+    const price = Number.parseFloat(row.querySelector('.price-input').value) || 0;
     const total = qty * price;
     row.querySelector('.col-total').textContent = formatCurrency(total);
     row.dataset.total = total;
@@ -167,7 +167,7 @@ function calculateTotals() {
     const rows = document.querySelectorAll('#quote-table tbody tr');
 
     rows.forEach(row => {
-        subtotal += parseFloat(row.dataset.total) || 0;
+        subtotal += Number.parseFloat(row.dataset.total) || 0;
     });
 
     // In this specific case, subtotal = total (no IVA displayed separately in screenshot/JSON)
