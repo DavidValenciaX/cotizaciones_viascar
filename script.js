@@ -80,7 +80,7 @@ function loadInitialData() {
     // But let's stick to passing a string that works with the new formatDate, or just pass the current date object and adjust formatDate?
     // The user provided specific code for formatDate that takes a string.
     // Let's generate a string in YYYY-MM-DD format for today to be safe and consistent with previous usage.
-    const todayString = now.toISOString().split('T')[0];
+    const todayString = now.toLocaleDateString('sv-SE', { timeZone: 'America/Bogota' });
     document.getElementById('quote-date-display').textContent = formatDate(todayString);
 
     // Sender Data
