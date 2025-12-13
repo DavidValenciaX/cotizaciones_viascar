@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function loadInitialData() {
     // Header Data
-    document.getElementById('company-name').textContent = "VIASCAR"; // Hardcoded in HTML but good to know
+    // document.getElementById('company-name').textContent = "VIASCAR"; // Removed to keep HTML static content
     // Use current date
     const now = new Date();
     // Format as YYYY-MM-DD for consistency if needed, but here we just need the string for formatDate
